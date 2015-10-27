@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html ng-app="Handbook">
+<html lang="en" ng-app="Handbook">
 	<head>
 		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Shift Medical Provider Handbook</title>
 
 		<!-- Latest compiled and minified CSS -->
@@ -10,56 +12,6 @@
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
 
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-		<script>
-			var HandbookApp = angular.module("Handbook", []);
-
-			HandbookApp.config(function($logProvider) {
-				$logProvider.debugEnabled(false);
-			});
-
-			HandbookApp.controller("ApplicationController", [
-				"$log",
-				function($log) {
-					$log.debug("ApplicationController");
-				}
-			]);
-
-			HandbookApp.controller("HandbookFilesListController", [
-				"$scope",
-				function($scope) {
-					$scope.files = [
-						"https://s3.amazonaws.com/provider-handbook/SM+EH1001+Equal+Employment+Opportunity+Policy.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH1002+Code+of+Business+Ethics.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH2001+Patient+Bill+of+Rights.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH2002+Confidential+Information.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH2003+National+Patient+Safety+Goals.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH2004+Centers+for+Disease+Control+Hand+Hygiene+Guidelines.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH2005+Ethical+Standards.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH2006+Code+of+Conduct.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH3003+Assignment+Cancellation.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH4001+Provider+Credentialing+Procedures.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH4002+Provider+Rights+and+Responsibilities.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH5001+Quality+of+Care+Incident+Reporting.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH6001+Cultural+Diversity+in+Nursing+Practice.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH6002+Americans+with+Disabilities+Act.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH6003+Grievance+Policy.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH6004+Emergency+Management+Plan.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH6005+Harrassment+Policy.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH7001+Performance+Management.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH8001+Platform+Privacy+Policy.pdf",
-						"https://s3.amazonaws.com/provider-handbook/SM+EH8002+Terms+of+Service.pdf",
-					];
-				}
-			]);
-		</script>
-
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -67,11 +19,23 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	</head>
-	<body class="container" ng-controller="ApplicationController">
+	<body class="container" ng-controller="ApplicationController" ng-cloak>
 		<h1>Shift Medical Employee Handbook</h1>
+		<p class="lead">We've provided these documents in response to Y Combinator's questions regarding our application.</p>
 
 		<ul ng-controller="HandbookFilesListController">
-			<li ng-repeat="file in files"><a ng-href="{{file}}">{{file}}</a></li>
+			<li ng-repeat="file in files"><a ng-href="{{file}}">{{get_filename(file)}}</a></li>
 		</ul>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+
+		<script src="app.js"></script>
 	</body>
 </html>
