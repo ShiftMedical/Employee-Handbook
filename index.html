@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="Handbook">
+	<head>
+		<meta charset="utf-8">
+		<title>Shift Medical Provider Handbook</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		<script>
+			var HandbookApp = angular.module("Handbook", []);
+
+			HandbookApp.config(function($logProvider) {
+				$logProvider.debugEnabled(false);
+			});
+
+			HandbookApp.controller("ApplicationController", [
+				"$log",
+				function($log) {
+					$log.debug("ApplicationController");
+				}
+			]);
+
+			HandbookApp.controller("HandbookFilesListController", [
+				"$scope",
+				function($scope) {
+					$scope.files = [
+						"https://s3.amazonaws.com/provider-handbook/SM+EH1001+Equal+Employment+Opportunity+Policy.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH1002+Code+of+Business+Ethics.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH2001+Patient+Bill+of+Rights.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH2002+Confidential+Information.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH2003+National+Patient+Safety+Goals.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH2004+Centers+for+Disease+Control+Hand+Hygiene+Guidelines.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH2005+Ethical+Standards.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH2006+Code+of+Conduct.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH3003+Assignment+Cancellation.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH4001+Provider+Credentialing+Procedures.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH4002+Provider+Rights+and+Responsibilities.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH5001+Quality+of+Care+Incident+Reporting.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH6001+Cultural+Diversity+in+Nursing+Practice.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH6002+Americans+with+Disabilities+Act.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH6003+Grievance+Policy.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH6004+Emergency+Management+Plan.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH6005+Harrassment+Policy.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH7001+Performance+Management.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH8001+Platform+Privacy+Policy.pdf",
+						"https://s3.amazonaws.com/provider-handbook/SM+EH8002+Terms+of+Service.pdf",
+					];
+				}
+			]);
+		</script>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body class="container" ng-controller="ApplicationController">
+		<h1>Shift Medical Employee Handbook</h1>
+
+		<ul ng-controller="HandbookFilesListController">
+			<li ng-repeat="file in files"><a ng-href="{{file}}">{{file}}</a></li>
+		</ul>
+	</body>
+</html>
