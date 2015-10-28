@@ -27,8 +27,8 @@
 	<h1>Shift Medical Employee Handbook</h1>
 
 	<div ng-controller="HandbookFilesListController">
-		<ul>
-			<li ng-repeat="item in items | orderBy:'name'"><a ng-href="{{item.url}}">{{item.name}}</a></li>
+		<ul class="list-group">
+			<li class="list-group-item" ng-repeat="item in items | orderBy:'name'"><a ng-href="{{item.url}}">{{item.name}}</a></li>
 		</ul>
 	</div>
 
