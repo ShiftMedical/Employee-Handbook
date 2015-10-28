@@ -1,5 +1,8 @@
 (function() {
-	var HandbookApp = angular.module("Handbook", ['ui.bootstrap']);
+	var HandbookApp = angular.module("Handbook", [
+		'ui.bootstrap',
+		'ui.router'
+	]);
 
 	HandbookApp.constant("CONFIG", {
 		"FILES": [
@@ -31,6 +34,15 @@
 		$logProvider.debugEnabled(false);
 	});
 
+	HandbookApp.config(function($locationProvider, $stateProvider, $urlRouterProvider) {
+		$locationProvider.html5Mode(true);
+		$urlRouterProvider.otherwise("/");
+		$stateProvider.state("home", {
+			url: "/",
+			templateUrl: "home.html"
+		});
+	});
+
 	HandbookApp.controller("ApplicationController", [
 		"$log",
 		"$scope",
@@ -39,10 +51,9 @@
 
 			$scope.alerts = [
 				{
-					"type": 'info',
+					"type": 'yc',
 					"msg": "We have provided these documents in response to Y Combinator's questions regarding our application.",
 					"timeout": 5 * 1000,
-					"templateUrl": "yc-alert.html",
 				},
 			];
 
