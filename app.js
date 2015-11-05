@@ -1,5 +1,6 @@
 (function() {
 	var HandbookApp = angular.module("Handbook", [
+		'ngSanitize',
 		'ui.bootstrap',
 		'ui.router'
 	]);
@@ -51,9 +52,8 @@
 
 			$scope.alerts = [
 				{
-					"type": 'yc',
-					"msg": "We have provided these documents in response to Y Combinator's questions regarding our application.",
-					"timeout": 5 * 1000,
+					"msg": "This is the Shift Medical Employee Handbook. For additional info <a href='mailto:support@shiftmedical.com'>contact our support team.</a>",
+					"timeout": 10 * 1000,
 				},
 			];
 

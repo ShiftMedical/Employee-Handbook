@@ -55,6 +55,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-sanitize.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
 	<!-- App -->
@@ -64,7 +65,7 @@
 		<div class="row">
 			<div class="col-xs-12" ng-repeat="alert in alerts">
 				<div>
-					<uib-alert style="background-color:#F26522;color:white" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout={{alert.timeout}}>{{alert.msg}}</uib-alert>
+					<uib-alert type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="{{alert.timeout}}"><span ng-bind-html="alert.msg"></span></uib-alert>
 				</div>
 			</div>
 		</div>
